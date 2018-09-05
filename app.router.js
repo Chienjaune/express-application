@@ -1,6 +1,6 @@
 const Express=require('express'),
       Router=Express.Router(),
-      PageController=require(`${__dirname}/controllers/page`);
+      PageController=require(`${process.cwd()}/controllers/page`);
 
 Router
 .route('/')
