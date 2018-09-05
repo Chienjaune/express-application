@@ -2,48 +2,41 @@
   <div class="col-md-9">
     <div class="slider">
       <ul class="slides">
-        <li><a href="#"><img src="dummy/slide-1.jpg" alt="Slide 1"></a></li>
-        <li><a href="#"><img src="dummy/slide-2.jpg" alt="Slide 2"></a></li>
-        <li><a href="#"><img src="dummy/slide-3.jpg" alt="Slide 3"></a></li>
+        {{#each top6_slide as |movie|}}
+        <li>
+          <a href="/review/{{movie._id}}">
+          <img src="{{movie.fields.image_url}}" alt="slide{{movie.fields.title}}">
+          </a>
+          </li>
+        {{/each}}
       </ul>
     </div>
   </div>
   <div class="col-md-3">
     <div class="row">
+      {{#each top6_right as |movie| }}
       <div class="col-sm-6 col-md-12">
         <div class="latest-movie">
-          <a href="#"><img src="dummy/thumb-1.jpg" alt="Movie 1"></a>
+          <a href="/review/{{movie._id}}">
+          <img src="{{movie.fields.image_url}}" alt="Movie{{movie.dileds.title}}">
+          </a>
         </div>
       </div>
+      {{/each}}
       <div class="col-sm-6 col-md-12">
         <div class="latest-movie">
-          <a href="#"><img src="dummy/thumb-2.jpg" alt="Movie 2"></a>
+          {{#each top6_left as |movie| }}
+          <a href="/review/{{movie._id}}">
+          <img src="{{movie.fields.image_url}}" alt="Movie{{movie.dileds.title}}">
+          </a>
         </div>
       </div>
+      {{/each}}
     </div>
   </div>
 </div> <!-- .row -->
 <div class="row">
-  <div class="col-sm-6 col-md-3">
-    <div class="latest-movie">
-      <a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="latest-movie">
-      <a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="latest-movie">
-      <a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="latest-movie">
-      <a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
-    </div>
-  </div>
+  
 </div> <!-- .row -->
 
 <div class="row">

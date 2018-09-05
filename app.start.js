@@ -12,6 +12,6 @@ Mongoose.connect ('mongodb://@localhost:27017/technocite',(error)=>{
 
 // connexion localhost
 
-App.listen(8007,()=>{
-console.log('server is running 8007');
+App.listen(8008,()=>{
+console.log('server is running 8008');
 });

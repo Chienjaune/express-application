@@ -1,34 +1,33 @@
 <div class="breadcrumbs">
   <a href="index.html">Home</a>
   <a href="review.html">Movie Review</a>
-  <span>The Croods</span>
+  <span>{{movie.fields.title}}</span>
 </div>
 
 <div class="content">
   <div class="row">
     <div class="col-md-6">
-      <figure class="movie-poster"><img src="dummy/single-image.jpg" alt="#"></figure>
+      <figure class="movie-poster"><img src="{{movie.fields.image_url}}" alt="#"></figure>
     </div>
     <div class="col-md-6">
-      <h2 class="movie-title">The Croods</h2>
+      <h2 class="movie-title">{{movie.fields.title}} </h2>
       <div class="movie-summary">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+        <p>{{movie.fields.plot}}</p>
 
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed.</p>
       </div>
       <ul class="movie-meta">
         <li><strong>Rating:</strong> 
-          <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
+          <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">{{movie.fields.rating}}</strong> out of 5</span></div>
         </li>
-        <li><strong>Length:</strong> 98 min</li>
-        <li><strong>Premiere:</strong> 22 March 2013 (USA)</li>
-        <li><strong>Category:</strong> Animation/Adventure/Comedy</li>
+        <li><strong>Length:</strong></li>
+        <li><strong>Premiere:</strong> {{movie.fields.release_date}}</li>
+        <li><strong>Category:</strong> {{movie.fields.genres}}</li>
       </ul>
 
       <ul class="starring">
-        <li><strong>Directors:</strong> Kirk de Mico (as Kirk DeMico). Chris Sanders</li>
+        <li><strong>Directors:</strong> {{movie.fields.directors}}</li>
         <li><strong>Writers:</strong> Chris Sanders (screenplay), Kirk De Micco (screenplay)</li>
-        <li><strong>Stars:</strong> Nicolas Cage, Ryan Reynolds, Emma Stone</li>
+        <li><strong>Stars:</strong> {{movie.fields.actors}}</li>
       </ul>
     </div>
   </div> <!-- .row -->
