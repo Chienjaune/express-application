@@ -15,7 +15,7 @@ Router
 .get(PageController.reviews);
 
 Router
-.route('/reviews/:genre/:year')
+.route('/reviews/:genre/:year/:page')
 .get(PageController.filter);
 
 module.exports=Router;

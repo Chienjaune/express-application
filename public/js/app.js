@@ -18,29 +18,66 @@
 		// Method ajax recherche par critère
 		var $selectorGenre=$('#select-genre');
 		var $selectorYear=$('#select-year');
+		var $selectorPage=$('.select-number');
 		console.log($selectorYear);
+		var currentPage=1;
+		var getMovies=function($selectorGenre,$selectorYear,page){
+			//2. retrieve selected data
+			var genre=$selectorGenre.val();
+			var year=$selectorYear.val();
+			 
+		
+	//3.Do ajax request
+	var url='/reviews/'+genre+'/'+year+'/'+page;
+	console.log(year);console.log(genre);
+	$.ajax({
+		url:url,
+		type:'GET',
+		success:function(response,status){
+			//methode 1: le serveur retourne une vue compilée
+			//console.log(response);
+		//	$('.movie-list').html(response);
+			//Méthode 2 : le serveur retourne du json
+			
+				let output=''
+				response.forEach((movie) => {
+					console.log(movie);
+					output+='<div class="movie">'
+					output+= `<figure class="movie-poster">`
+					output+='<img src="'+movie.fields.image_url+'>'
+					output+='</figure>'
+					output+='<div class="movie-title">'
+					output+='<a href="/review/"'+ movie.fields.title+'</a>'
+					output+='</div>'
+					output+='<p>'+movie.fields.plot+'</p>'
+					output+='</div>'
+					
+				});
+				$('.movie-list').html(output);
+			
+		},
+		error:function(error,response,status){
+			alert(error.message);
+		}
+	});
+		};
 		if($selectorGenre.length && $selectorYear.length){
 			//1. attach change event listener
 			$( ".filter-selector").on ('change',function(){
-				//2. retrieve selected data
-				var genre=$selectorGenre.val();
-				var year=$selectorYear.val();
-				//3.Do ajax request
-				var url='/reviews/'+genre+'/'+year;
-				console.log(year);console.log(genre);
-				$.ajax({
-					url:url,
-					type:'GET',
-					success:function(response,status){
-						//methode 1: le serveur retourne une vue compilée
-						//console.log(response);
-						$('.movie-list').html(response);
-					},
-					error:function(error,response,status){
-						alert(error.message);
-					}
-				})
+				getMovies($selectorGenre,$selectorYear,currentPage)
 			}); 
+			$selectorPage.on('click',function(e){
+				e.preventDefult();
+				currentPage=$(this).text();
+				$selectorPage.each(($selector)=>{
+					$($selector).removeClass('current');
+					if($(this).text()===currentPage){
+						$(this).addClass('current');
+					}
+				});
+				getMovies($selectorGenre,$selectorYear,currentPage);
+			});
+		
 		}
 
 

@@ -62,6 +62,8 @@ exports.filter = async (req, res) => {
     console.log('wouf');
     let genre = req.params.genre;
     let year = req.params.year;
+    let page=req.params.page-1;
+    let numberOfResultsToDisplay=12;
 
     let movies = await Movie
         .find(
@@ -73,11 +75,15 @@ exports.filter = async (req, res) => {
             }
         )
         .sort({ 'fields.title': 1 })
-        .limit(12);
+        .skip(numberOfResultsToDisplay*page)  //12*3=36 donne le numéro deu premier enregistrement de la page
+        .limit(numberOfResultsToDisplay);
+
     //Retourner les résultat
     //Méthode1 : retourner la vue compilée côté serveur dan le cas ou il n'y a pas de framework côté client
-    res.render('partials/movies', {
+   /* res.render('partials/movies', {
         movies: movies,
         layout: null
-    })
-}
+    });*/
+    res.json(movies); //Express expose json() sur req, sinon, res.end(JSON.stringify(movies));
+
+};
