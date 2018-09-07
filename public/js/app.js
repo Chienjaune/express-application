@@ -15,6 +15,33 @@
 
 			$parent.find("input").toggleClass("active").focus();
 		});
+		// Method ajax recherche par critère
+		var $selectorGenre=$('#select-genre');
+		var $selectorYear=$('#select-year');
+		console.log($selectorYear);
+		if($selectorGenre.length && $selectorYear.length){
+			//1. attach change event listener
+			$( ".filter-selector").on ('change',function(){
+				//2. retrieve selected data
+				var genre=$selectorGenre.val();
+				var year=$selectorYear.val();
+				//3.Do ajax request
+				var url='/reviews/'+genre+'/'+year;
+				console.log(year);console.log(genre);
+				$.ajax({
+					url:url,
+					type:'GET',
+					success:function(response,status){
+						//methode 1: le serveur retourne une vue compilée
+						//console.log(response);
+						$('.movie-list').html(response);
+					},
+					error:function(error,response,status){
+						alert(error.message);
+					}
+				})
+			}); 
+		}
 
 
 		$(".slider").flexslider({
@@ -37,6 +64,7 @@
 	    	
 	    }
 	});
+
 
 	$(window).load(function(){
 

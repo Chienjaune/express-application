@@ -29,7 +29,7 @@ let schema = new Schema({
         },
         // validation uniquement sur save et create
         //pour une validation sue update, ajouter une option {runValidators:true}
-        //Déclencher une vazlidation sur un objet Mongoose déclenche aussi une validation sur les sous-documents
+        //Déclencher une validation sur un objet Mongoose déclenche aussi une validation sur les sous-documents
         rank:{
             type:Number,
             // validateur custom

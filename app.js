@@ -33,11 +33,13 @@ i18n.configure({
       defaultLayout : `${__dirname}/views/layouts/default.hbs`
   }))
 
+  
   app.set('view engine','hbs')
  HBSHelpers.registerHelpers(Engine)
  app.use(Express.static('public'))
  
  /*Set Router on */
+ 
  app.use('/',Router)
 
  

@@ -4,15 +4,15 @@
 </div>
 
 <div class="filters">
-  <select name="#" id="#" placeholder="Choose Category">
+  <select class="filter-selector" name="#" id="select-genre" >
     {{#each genres as |genre|}}
     <option value="{{genre}}">{{genre}}</option>
     {{/each}}
     
   </select>
-  <select name="#" id="#">
+  <select class="filter-selector" name="year" id="select-year">
     {{#each years as |years|}}
-    <option value="{{year}}">{{years}}</option>
+    <option value="{{years}}">{{years}}</option>
     {{/each}}
   </select>
 </div>

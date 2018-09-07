@@ -10,8 +10,13 @@ Router
 .route('/review/:id')
 .get(PageController.details);
 
-Router.route('/reviews')
+Router
+.route('/reviews')
 .get(PageController.reviews);
+
+Router
+.route('/reviews/:genre/:year')
+.get(PageController.filter);
 
 module.exports=Router;
 

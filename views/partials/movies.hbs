@@ -1,0 +1,10 @@
+
+  {{#each movies as |movies|}}
+  <div class="movie">
+    <figure class="movie-poster"><img src="{{movies.fields.image_url}}" alt="#"></figure>
+    <div class="movie-title"><a href="single.html">{{movies.fields.title}}</a></div>
+    <p>{{movies.fields.plot}}</p>
+  </div>
+ {{/each}}
+
+
