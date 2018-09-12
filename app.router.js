@@ -1,22 +1,42 @@
-const Express=require('express'),
-      Router=Express.Router(),
-      PageController=require(`${process.cwd()}/controllers/page`);
+const Express = require('express'),
+      Router = Express.Router(),
+      PageController = require(`${process.cwd()}/controllers/page`);
+AuthenticationController = require(`${process.cwd()}/controllers/authentication`);
 
 Router
-.route('/')
-.get(PageController.index);
+      .route('/')
+      .get(PageController.index);
 
 Router
-.route('/review/:id')
-.get(PageController.details);
+      .route('/about')
+      .get(AuthenticationController.isAuthenticated,
+           PageController.about)
 
 Router
-.route('/reviews')
-.get(PageController.reviews);
+      .route('/review/:id')
+      .get(PageController.details);
 
 Router
-.route('/reviews/:genre/:year/:page')
-.get(PageController.filter);
+      .route('/reviews')
+      .get(PageController.reviews);
 
-module.exports=Router;
+Router
+      .route('/reviews/:genre/:year/:page')
+      .get(PageController.filter);
+
+Router
+      .route('/login')
+      .get(PageController.login);
+
+Router
+      .route('/register')
+      .get(PageController.subscribe)
+      .post(PageController.validateSubscription,
+            AuthenticationController.login);
+Router
+      .route('/logout')
+      .get(AuthenticationController.logout);
+
+
+module.exports = Router;
 
